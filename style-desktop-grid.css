@@ -1,0 +1,260 @@
+
+@font-face{
+    font-family: "Josefin Sans";
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style:normal;
+    src:url("./fonts/JosefinSans-Light.ttf");
+}
+
+@font-face{
+    font-family: "Josefin Sans";
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style:normal;
+    src:url("./fonts/JosefinSans-Regular.ttf");
+}
+
+@font-face{
+    font-family: "Josefin Sans";
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style:normal;
+    src:url("./fonts/JosefinSans-SemiBold.ttf");
+}
+:root{
+
+    /* ### Primary  */
+ --clr-desaturated-red:0, 36%, 70%;
+
+ --soft-red:0, 93%, 68%;
+ 
+   /* ### Neutral */
+ --clr-grayish-red:hsl(0, 6%, 24%);
+ --clr-gray-border:hsl(204, 8%, 76%);
+
+  /* ### Gradients */
+--clr-linear-gradient-1:linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
+--clr-linear-gradient-2:linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+--clr-linear-gradient-3:linear-gradient(135deg, hsl(0, 80%, 94%), hsl(0, 74%, 82%));
+
+}
+
+body{
+    position:relative;
+    min-height:100vh;
+    font-family: "Josefin Sans";
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background-image: var(--clr-linear-gradient-1);
+}
+
+body > * {
+    min-width:325px;
+}
+
+header{ 
+    width:100%;
+    padding:clamp(2rem, 6vw, 4rem);
+    display:flex;
+}
+
+header img{
+    width:max(20vw, 6rem);
+}
+
+.img-container{
+    width:100%;
+    height:auto;
+}
+
+.img-container img{
+    width:100%;
+}
+
+
+.mobile-hero{
+      width:100%;
+}
+
+main{
+    position:relative;
+    padding-top:4rem;
+    padding-inline:1.4rem;
+    padding-bottom:6rem;
+}
+
+article{
+    text-align:center;
+}
+
+.headline{
+    font-size:clamp(2.55rem, 5.25vw, 3.75rem);
+    text-transform:uppercase; 
+    letter-spacing:clamp(0.438rem, 3vw, 1.06rem);
+    line-height:clamp(2.813rem, 6vw, 4.5rem);
+}
+
+.headline span{
+    display:block; 
+    color:hsl(var(--clr-desaturated-red));
+    font-weight:200;
+}
+
+.text{
+    font-size:clamp(0.935rem, 3vw, 0.95rem);
+    color:hsl(var(--clr-desaturated-red));
+    padding-top:1rem;
+    padding-inline:0.1rem;
+    padding-bottom:2rem;
+    line-height:1.65;
+
+}
+
+form{
+    position:relative;
+}
+
+input{
+     display:flex;
+     width:100%;
+     padding:0.75rem 1rem;
+     border-radius:40px;
+     background-color: transparent;
+     border:1.5px solid hsla(var(--clr-desaturated-red), 0.4);
+}
+
+input:focus{
+    outline:0;
+}
+
+::placeholder{
+     color:hsla(var(--clr-desaturated-red),0.4);
+     padding-left:1rem;
+}
+
+button{
+     position:absolute;
+     top:0;
+     bottom:0;
+     right:0;
+     background-image:var(--clr-linear-gradient-2);
+     border:none;
+     padding:0.94rem 1.75rem;
+     border-radius:60px;
+     cursor:pointer;
+     box-shadow:0 10px 20px hsla(var(--soft-red), 0.3);
+}
+
+button:hover{
+    background-image:var(--clr-linear-gradient-3);
+    box-shadow:0 13px 20px hsla(var(--clr-desaturated-red), 0.8);
+}
+
+.error-icon{
+    position:absolute;
+    bottom:0.9rem;
+    right:clamp(20%, 6.6rem, 29%);
+}
+
+.error-message{
+     position:absolute;
+     top:4rem;
+     left:2rem;
+     color: hsl(var(--soft-red));
+}
+
+.hidden{
+     display:none;
+}
+
+footer{
+     position:absolute;
+     left:50%;
+     bottom:4%;
+     transform:translateX(-50%);
+     font-size:10px;
+     white-space:nowrap;
+     text-align:center;
+}
+
+@media (min-width:48rem){
+
+    .img-container img{
+        display:none;
+    }
+
+    footer{
+          display:none;
+    }
+
+    body{
+        max-height:100vh;
+        background:url("images/bg-pattern-desktop.svg");
+        background-position:bottom left;
+        display:grid;
+        grid-template-columns:56% 44%;
+        grid-template-rows:repeat(5, 1fr);
+        gap:0;
+        /* -------------- Grid Area syntax alternative ----------- */
+        /* grid-template-areas: "header img-container"
+                                "main img-container"
+                                "main img-container"
+                                "main img-container"
+                                "main img-container" */
+                                 
+    }
+
+    
+    header{
+        padding-left:10vw;
+        grid-column:1 / 2;
+        grid-row:1 / 2;
+        /* -------------- Grid Area syntax alternative ----------- */
+        /* grid-area : header; */
+    }
+
+    header img{
+        width:160px;
+    }
+
+    main{
+        grid-column:1 / 2;
+        grid-row:2 / 5;
+        /* -------------- Grid Area syntax alternative ----------- */
+        /* grid-area: main; */
+        max-width:610px;
+        align-self:start;
+        padding:0;
+        margin-top:3rem;
+        padding-left:clamp(2rem, 11vw, 9rem);
+        padding-right:4vw;
+    }
+
+    article{
+        text-align:left;
+    }
+
+    .img-container{
+        grid-column: 2 / 3;
+        grid-row: 1 / 6;
+        /* -------------- Grid Area syntax alternative ----------- */
+        /* grid-area:img-container; */
+        height:100%;
+        background-image:url("images/hero-desktop.jpg");
+        background-position: center center;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+
+    .img-container img{
+        height:100%;
+    }
+
+    button{
+        padding:0.94rem 2.5rem; 
+    } 
+
+}
